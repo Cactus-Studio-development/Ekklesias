@@ -1,0 +1,729 @@
+0 verbose cli /usr/local/Cellar/node/24.9.0_1/bin/node /usr/local/bin/npm
+1 info using npm@11.6.0
+2 info using node@v24.9.0
+3 silly config load:file:/usr/local/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/admin/Documents/codex/ekklesias/.npmrc
+5 silly config load:file:/Users/admin/.npmrc
+6 silly config load:file:/usr/local/etc/npmrc
+7 verbose title npm install react-icons
+8 verbose argv "install" "react-icons" "--cache" ".npm-cache"
+9 verbose logfile logs-max:10 dir:/Users/admin/Documents/codex/ekklesias/.npm-cache/_logs/2026-02-18T20_31_27_404Z-
+10 verbose logfile /Users/admin/Documents/codex/ekklesias/.npm-cache/_logs/2026-02-18T20_31_27_404Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly idealTree buildDeps
+14 silly fetch manifest react-icons@*
+15 silly packumentCache full:https://registry.npmjs.org/react-icons cache-miss
+16 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules/wrap-ansi-cjs/node_modules/emoji-regex
+17 http fetch GET 200 https://registry.npmjs.org/react-icons 349ms (cache miss)
+18 silly packumentCache full:https://registry.npmjs.org/react-icons set size:undefined disposed:false
+19 silly fetch manifest react@18.3.1
+20 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+21 http fetch GET 200 https://registry.npmjs.org/react 75ms (cache revalidated)
+22 silly packumentCache full:https://registry.npmjs.org/react set size:6496179 disposed:false
+23 silly placeDep ROOT react-icons@5.5.0 OK for: ekklesias@0.1.0 want: *
+24 silly reify moves {}
+25 silly audit bulk request {
+25 silly audit   '@emnapi/core': [ '1.8.1' ],
+25 silly audit   '@emnapi/runtime': [ '1.8.1' ],
+25 silly audit   '@emnapi/wasi-threads': [ '1.1.0' ],
+25 silly audit   '@eslint-community/eslint-utils': [ '4.9.1' ],
+25 silly audit   '@eslint-community/regexpp': [ '4.12.2' ],
+25 silly audit   '@eslint/eslintrc': [ '2.1.4' ],
+25 silly audit   '@eslint/js': [ '8.57.0' ],
+25 silly audit   '@humanwhocodes/config-array': [ '0.11.14' ],
+25 silly audit   '@humanwhocodes/module-importer': [ '1.0.1' ],
+25 silly audit   '@humanwhocodes/object-schema': [ '2.0.3' ],
+25 silly audit   '@isaacs/cliui': [ '8.0.2' ],
+25 silly audit   'ansi-regex': [ '6.2.2', '5.0.1' ],
+25 silly audit   'strip-ansi': [ '7.1.2', '6.0.1' ],
+25 silly audit   '@napi-rs/wasm-runtime': [ '0.2.12' ],
+25 silly audit   '@next/env': [ '14.2.5' ],
+25 silly audit   '@next/eslint-plugin-next': [ '14.2.5' ],
+25 silly audit   '@next/swc-darwin-arm64': [ '14.2.5' ],
+25 silly audit   '@next/swc-darwin-x64': [ '14.2.5' ],
+25 silly audit   '@next/swc-linux-arm64-gnu': [ '14.2.5' ],
+25 silly audit   '@next/swc-linux-arm64-musl': [ '14.2.5' ],
+25 silly audit   '@next/swc-linux-x64-gnu': [ '14.2.5' ],
+25 silly audit   '@next/swc-linux-x64-musl': [ '14.2.5' ],
+25 silly audit   '@next/swc-win32-arm64-msvc': [ '14.2.5' ],
+25 silly audit   '@next/swc-win32-ia32-msvc': [ '14.2.5' ],
+25 silly audit   '@next/swc-win32-x64-msvc': [ '14.2.5' ],
+25 silly audit   '@nodelib/fs.scandir': [ '2.1.5' ],
+25 silly audit   '@nodelib/fs.stat': [ '2.0.5' ],
+25 silly audit   '@nodelib/fs.walk': [ '1.2.8' ],
+25 silly audit   '@nolyfill/is-core-module': [ '1.0.39' ],
+25 silly audit   '@pkgjs/parseargs': [ '0.11.0' ],
+25 silly audit   '@rtsao/scc': [ '1.1.0' ],
+25 silly audit   '@rushstack/eslint-patch': [ '1.15.0' ],
+25 silly audit   '@swc/counter': [ '0.1.3' ],
+25 silly audit   '@swc/helpers': [ '0.5.5' ],
+25 silly audit   '@tybys/wasm-util': [ '0.10.1' ],
+25 silly audit   '@types/json5': [ '0.0.29' ],
+25 silly audit   '@types/node': [ '20.14.10' ],
+25 silly audit   '@types/prop-types': [ '15.7.15' ],
+25 silly audit   '@types/react': [ '18.3.3' ],
+25 silly audit   '@types/react-dom': [ '18.3.0' ],
+25 silly audit   '@typescript-eslint/parser': [ '7.2.0' ],
+25 silly audit   '@typescript-eslint/scope-manager': [ '7.2.0' ],
+25 silly audit   '@typescript-eslint/types': [ '7.2.0' ],
+25 silly audit   '@typescript-eslint/typescript-estree': [ '7.2.0' ],
+25 silly audit   'brace-expansion': [ '2.0.2', '1.1.12' ],
+25 silly audit   minimatch: [ '9.0.3', '9.0.5', '3.1.2' ],
+25 silly audit   '@typescript-eslint/visitor-keys': [ '7.2.0' ],
+25 silly audit   '@ungap/structured-clone': [ '1.3.0' ],
+25 silly audit   '@unrs/resolver-binding-android-arm-eabi': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-android-arm64': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-darwin-arm64': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-darwin-x64': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-freebsd-x64': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-linux-arm-gnueabihf': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-linux-arm-musleabihf': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-linux-arm64-gnu': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-linux-arm64-musl': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-linux-ppc64-gnu': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-linux-riscv64-gnu': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-linux-riscv64-musl': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-linux-s390x-gnu': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-linux-x64-gnu': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-linux-x64-musl': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-wasm32-wasi': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-win32-arm64-msvc': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-win32-ia32-msvc': [ '1.11.1' ],
+25 silly audit   '@unrs/resolver-binding-win32-x64-msvc': [ '1.11.1' ],
+25 silly audit   acorn: [ '8.15.0' ],
+25 silly audit   'acorn-jsx': [ '5.3.2' ],
+25 silly audit   ajv: [ '6.12.6' ],
+25 silly audit   'ansi-styles': [ '4.3.0', '6.2.3' ],
+25 silly audit   argparse: [ '2.0.1' ],
+25 silly audit   'aria-query': [ '5.3.2' ],
+25 silly audit   'array-buffer-byte-length': [ '1.0.2' ],
+25 silly audit   'array-includes': [ '3.1.9' ],
+25 silly audit   'array-union': [ '2.1.0' ],
+25 silly audit   'array.prototype.findlast': [ '1.2.5' ],
+25 silly audit   'array.prototype.findlastindex': [ '1.2.6' ],
+25 silly audit   'array.prototype.flat': [ '1.3.3' ],
+25 silly audit   'array.prototype.flatmap': [ '1.3.3' ],
+25 silly audit   'array.prototype.tosorted': [ '1.1.4' ],
+25 silly audit   'arraybuffer.prototype.slice': [ '1.0.4' ],
+25 silly audit   'ast-types-flow': [ '0.0.8' ],
+25 silly audit   'async-function': [ '1.0.0' ],
+25 silly audit   'available-typed-arrays': [ '1.0.7' ],
+25 silly audit   'axe-core': [ '4.11.1' ],
+25 silly audit   'axobject-query': [ '4.1.0' ],
+25 silly audit   'balanced-match': [ '1.0.2' ],
+25 silly audit   braces: [ '3.0.3' ],
+25 silly audit   busboy: [ '1.6.0' ],
+25 silly audit   'call-bind': [ '1.0.8' ],
+25 silly audit   'call-bind-apply-helpers': [ '1.0.2' ],
+25 silly audit   'call-bound': [ '1.0.4' ],
+25 silly audit   callsites: [ '3.1.0' ],
+25 silly audit   'caniuse-lite': [ '1.0.30001770' ],
+25 silly audit   chalk: [ '4.1.2' ],
+25 silly audit   'client-only': [ '0.0.1' ],
+25 silly audit   'color-convert': [ '2.0.1' ],
+25 silly audit   'color-name': [ '1.1.4' ],
+25 silly audit   'concat-map': [ '0.0.1' ],
+25 silly audit   'cross-spawn': [ '7.0.6' ],
+25 silly audit   csstype: [ '3.2.3' ],
+25 silly audit   'damerau-levenshtein': [ '1.0.8' ],
+25 silly audit   'data-view-buffer': [ '1.0.2' ],
+25 silly audit   'data-view-byte-length': [ '1.0.2' ],
+25 silly audit   'data-view-byte-offset': [ '1.0.1' ],
+25 silly audit   debug: [ '4.4.3', '3.2.7' ],
+25 silly audit   'deep-is': [ '0.1.4' ],
+25 silly audit   'define-data-property': [ '1.1.4' ],
+25 silly audit   'define-properties': [ '1.2.1' ],
+25 silly audit   'dir-glob': [ '3.0.1' ],
+25 silly audit   doctrine: [ '3.0.0', '2.1.0' ],
+25 silly audit   'dunder-proto': [ '1.0.1' ],
+25 silly audit   eastasianwidth: [ '0.2.0' ],
+25 silly audit   'emoji-regex': [ '9.2.2', '8.0.0' ],
+25 silly audit   'es-abstract': [ '1.24.1' ],
+25 silly audit   'es-define-property': [ '1.0.1' ],
+25 silly audit   'es-errors': [ '1.3.0' ],
+25 silly audit   'es-iterator-helpers': [ '1.2.2' ],
+25 silly audit   'es-object-atoms': [ '1.1.1' ],
+25 silly audit   'es-set-tostringtag': [ '2.1.0' ],
+25 silly audit   'es-shim-unscopables': [ '1.1.0' ],
+25 silly audit   'es-to-primitive': [ '1.3.0' ],
+25 silly audit   'escape-string-regexp': [ '4.0.0' ],
+25 silly audit   eslint: [ '8.57.0' ],
+25 silly audit   'eslint-config-next': [ '14.2.5' ],
+25 silly audit   'eslint-import-resolver-node': [ '0.3.9' ],
+25 silly audit   'eslint-import-resolver-typescript': [ '3.10.1' ],
+25 silly audit   'eslint-module-utils': [ '2.12.1' ],
+25 silly audit   'eslint-plugin-import': [ '2.32.0' ],
+25 silly audit   semver: [ '6.3.1', '7.7.4' ],
+25 silly audit   'eslint-plugin-jsx-a11y': [ '6.10.2' ],
+25 silly audit   'eslint-plugin-react': [ '7.37.5' ],
+25 silly audit   'eslint-plugin-react-hooks': [ '5.0.0-canary-7118f5dd7-20230705' ],
+25 silly audit   resolve: [ '2.0.0-next.6', '1.22.11' ],
+25 silly audit   'eslint-scope': [ '7.2.2' ],
+25 silly audit   'eslint-visitor-keys': [ '3.4.3' ],
+25 silly audit   espree: [ '9.6.1' ],
+25 silly audit   esquery: [ '1.7.0' ],
+25 silly audit   esrecurse: [ '4.3.0' ],
+25 silly audit   estraverse: [ '5.3.0' ],
+25 silly audit   esutils: [ '2.0.3' ],
+25 silly audit   'fast-deep-equal': [ '3.1.3' ],
+25 silly audit   'fast-glob': [ '3.3.3' ],
+25 silly audit   'glob-parent': [ '5.1.2', '6.0.2' ],
+25 silly audit   'fast-json-stable-stringify': [ '2.1.0' ],
+25 silly audit   'fast-levenshtein': [ '2.0.6' ],
+25 silly audit   fastq: [ '1.20.1' ],
+25 silly audit   'file-entry-cache': [ '6.0.1' ],
+25 silly audit   'fill-range': [ '7.1.1' ],
+25 silly audit   'find-up': [ '5.0.0' ],
+25 silly audit   'flat-cache': [ '3.2.0' ],
+25 silly audit   flatted: [ '3.3.3' ],
+25 silly audit   'for-each': [ '0.3.5' ],
+25 silly audit   'foreground-child': [ '3.3.1' ],
+25 silly audit   'fs.realpath': [ '1.0.0' ],
+25 silly audit   'function-bind': [ '1.1.2' ],
+25 silly audit   'function.prototype.name': [ '1.1.8' ],
+25 silly audit   'functions-have-names': [ '1.2.3' ],
+25 silly audit   'generator-function': [ '2.0.1' ],
+25 silly audit   'get-intrinsic': [ '1.3.0' ],
+25 silly audit   'get-proto': [ '1.0.1' ],
+25 silly audit   'get-symbol-description': [ '1.1.0' ],
+25 silly audit   'get-tsconfig': [ '4.13.6' ],
+25 silly audit   glob: [ '10.3.10', '7.2.3' ],
+25 silly audit   globals: [ '13.24.0' ],
+25 silly audit   globalthis: [ '1.0.4' ],
+25 silly audit   globby: [ '11.1.0' ],
+25 silly audit   gopd: [ '1.2.0' ],
+25 silly audit   'graceful-fs': [ '4.2.11' ],
+25 silly audit   graphemer: [ '1.4.0' ],
+25 silly audit   'has-bigints': [ '1.1.0' ],
+25 silly audit   'has-flag': [ '4.0.0' ],
+25 silly audit   'has-property-descriptors': [ '1.0.2' ],
+25 silly audit   'has-proto': [ '1.2.0' ],
+25 silly audit   'has-symbols': [ '1.1.0' ],
+25 silly audit   'has-tostringtag': [ '1.0.2' ],
+25 silly audit   hasown: [ '2.0.2' ],
+25 silly audit   ignore: [ '5.3.2' ],
+25 silly audit   'import-fresh': [ '3.3.1' ],
+25 silly audit   imurmurhash: [ '0.1.4' ],
+25 silly audit   inflight: [ '1.0.6' ],
+25 silly audit   inherits: [ '2.0.4' ],
+25 silly audit   'internal-slot': [ '1.1.0' ],
+25 silly audit   'is-array-buffer': [ '3.0.5' ],
+25 silly audit   'is-async-function': [ '2.1.1' ],
+25 silly audit   'is-bigint': [ '1.1.0' ],
+25 silly audit   'is-boolean-object': [ '1.2.2' ],
+25 silly audit   'is-bun-module': [ '2.0.0' ],
+25 silly audit   'is-callable': [ '1.2.7' ],
+25 silly audit   'is-core-module': [ '2.16.1' ],
+25 silly audit   'is-data-view': [ '1.0.2' ],
+25 silly audit   'is-date-object': [ '1.1.0' ],
+25 silly audit   'is-extglob': [ '2.1.1' ],
+25 silly audit   'is-finalizationregistry': [ '1.1.1' ],
+25 silly audit   'is-fullwidth-code-point': [ '3.0.0' ],
+25 silly audit   'is-generator-function': [ '1.1.2' ],
+25 silly audit   'is-glob': [ '4.0.3' ],
+25 silly audit   'is-map': [ '2.0.3' ],
+25 silly audit   'is-negative-zero': [ '2.0.3' ],
+25 silly audit   'is-number': [ '7.0.0' ],
+25 silly audit   'is-number-object': [ '1.1.1' ],
+25 silly audit   'is-path-inside': [ '3.0.3' ],
+25 silly audit   'is-regex': [ '1.2.1' ],
+25 silly audit   'is-set': [ '2.0.3' ],
+25 silly audit   'is-shared-array-buffer': [ '1.0.4' ],
+25 silly audit   'is-string': [ '1.1.1' ],
+25 silly audit   'is-symbol': [ '1.1.1' ],
+25 silly audit   'is-typed-array': [ '1.1.15' ],
+25 silly audit   'is-weakmap': [ '2.0.2' ],
+25 silly audit   'is-weakref': [ '1.1.1' ],
+25 silly audit   'is-weakset': [ '2.0.4' ],
+25 silly audit   isarray: [ '2.0.5' ],
+25 silly audit   isexe: [ '2.0.0' ],
+25 silly audit   'iterator.prototype': [ '1.1.5' ],
+25 silly audit   jackspeak: [ '2.3.6' ],
+25 silly audit   'js-tokens': [ '4.0.0' ],
+25 silly audit   'js-yaml': [ '4.1.1' ],
+25 silly audit   'json-buffer': [ '3.0.1' ],
+25 silly audit   'json-schema-traverse': [ '0.4.1' ],
+25 silly audit   'json-stable-stringify-without-jsonify': [ '1.0.1' ],
+25 silly audit   json5: [ '1.0.2' ],
+25 silly audit   'jsx-ast-utils': [ '3.3.5' ],
+25 silly audit   keyv: [ '4.5.4' ],
+25 silly audit   'language-subtag-registry': [ '0.3.23' ],
+25 silly audit   'language-tags': [ '1.0.9' ],
+25 silly audit   levn: [ '0.4.1' ],
+25 silly audit   'locate-path': [ '6.0.0' ],
+25 silly audit   'lodash.merge': [ '4.6.2' ],
+25 silly audit   'loose-envify': [ '1.4.0' ],
+25 silly audit   'lru-cache': [ '10.4.3' ],
+25 silly audit   'math-intrinsics': [ '1.1.0' ],
+25 silly audit   merge2: [ '1.4.1' ],
+25 silly audit   micromatch: [ '4.0.8' ],
+25 silly audit   minimist: [ '1.2.8' ],
+25 silly audit   minipass: [ '7.1.2' ],
+25 silly audit   ms: [ '2.1.3' ],
+25 silly audit   nanoid: [ '3.3.11' ],
+25 silly audit   'napi-postinstall': [ '0.3.4' ],
+25 silly audit   'natural-compare': [ '1.4.0' ],
+25 silly audit   next: [ '14.2.5' ],
+25 silly audit   'node-exports-info': [ '1.6.0' ],
+25 silly audit   'object-assign': [ '4.1.1' ],
+25 silly audit   'object-inspect': [ '1.13.4' ],
+25 silly audit   'object-keys': [ '1.1.1' ],
+25 silly audit   'object.assign': [ '4.1.7' ],
+25 silly audit   'object.entries': [ '1.1.9' ],
+25 silly audit   'object.fromentries': [ '2.0.8' ],
+25 silly audit   'object.groupby': [ '1.0.3' ],
+25 silly audit   'object.values': [ '1.2.1' ],
+25 silly audit   once: [ '1.4.0' ],
+25 silly audit   optionator: [ '0.9.4' ],
+25 silly audit   'own-keys': [ '1.0.1' ],
+25 silly audit   'p-limit': [ '3.1.0' ],
+25 silly audit   'p-locate': [ '5.0.0' ],
+25 silly audit   'parent-module': [ '1.0.1' ],
+25 silly audit   'path-exists': [ '4.0.0' ],
+25 silly audit   'path-is-absolute': [ '1.0.1' ],
+25 silly audit   'path-key': [ '3.1.1' ],
+25 silly audit   'path-parse': [ '1.0.7' ],
+25 silly audit   'path-scurry': [ '1.11.1' ],
+25 silly audit   'path-type': [ '4.0.0' ],
+25 silly audit   picocolors: [ '1.1.1' ],
+25 silly audit   picomatch: [ '2.3.1', '4.0.3' ],
+25 silly audit   'possible-typed-array-names': [ '1.1.0' ],
+25 silly audit   postcss: [ '8.4.31' ],
+25 silly audit   'prelude-ls': [ '1.2.1' ],
+25 silly audit   'prop-types': [ '15.8.1' ],
+25 silly audit   punycode: [ '2.3.1' ],
+25 silly audit   'queue-microtask': [ '1.2.3' ],
+25 silly audit   react: [ '18.3.1' ],
+25 silly audit   'react-dom': [ '18.3.1' ],
+25 silly audit   'react-is': [ '16.13.1' ],
+25 silly audit   'reflect.getprototypeof': [ '1.0.10' ],
+25 silly audit   'regexp.prototype.flags': [ '1.5.4' ],
+25 silly audit   'resolve-from': [ '4.0.0' ],
+25 silly audit   'resolve-pkg-maps': [ '1.0.0' ],
+25 silly audit   reusify: [ '1.1.0' ],
+25 silly audit   rimraf: [ '3.0.2' ],
+25 silly audit   'run-parallel': [ '1.2.0' ],
+25 silly audit   'safe-array-concat': [ '1.1.3' ],
+25 silly audit   'safe-push-apply': [ '1.0.0' ],
+25 silly audit   'safe-regex-test': [ '1.1.0' ],
+25 silly audit   scheduler: [ '0.23.2' ],
+25 silly audit   'set-function-length': [ '1.2.2' ],
+25 silly audit   'set-function-name': [ '2.0.2' ],
+25 silly audit   'set-proto': [ '1.0.0' ],
+25 silly audit   'shebang-command': [ '2.0.0' ],
+25 silly audit   'shebang-regex': [ '3.0.0' ],
+25 silly audit   'side-channel': [ '1.1.0' ],
+25 silly audit   'side-channel-list': [ '1.0.0' ],
+25 silly audit   'side-channel-map': [ '1.0.1' ],
+25 silly audit   'side-channel-weakmap': [ '1.0.2' ],
+25 silly audit   'signal-exit': [ '4.1.0' ],
+25 silly audit   slash: [ '3.0.0' ],
+25 silly audit   'source-map-js': [ '1.2.1' ],
+25 silly audit   'stable-hash': [ '0.0.5' ],
+25 silly audit   'stop-iteration-iterator': [ '1.1.0' ],
+25 silly audit   streamsearch: [ '1.1.0' ],
+25 silly audit   'string-width': [ '5.1.2', '4.2.3' ],
+25 silly audit   'string.prototype.includes': [ '2.0.1' ],
+25 silly audit   'string.prototype.matchall': [ '4.0.12' ],
+25 silly audit   'string.prototype.repeat': [ '1.0.0' ],
+25 silly audit   'string.prototype.trim': [ '1.2.10' ],
+25 silly audit   'string.prototype.trimend': [ '1.0.9' ],
+25 silly audit   'string.prototype.trimstart': [ '1.0.8' ],
+25 silly audit   'strip-bom': [ '3.0.0' ],
+25 silly audit   'strip-json-comments': [ '3.1.1' ],
+25 silly audit   'styled-jsx': [ '5.1.1' ],
+25 silly audit   'supports-color': [ '7.2.0' ],
+25 silly audit   'supports-preserve-symlinks-flag': [ '1.0.0' ],
+25 silly audit   'text-table': [ '0.2.0' ],
+25 silly audit   tinyglobby: [ '0.2.15' ],
+25 silly audit   fdir: [ '6.5.0' ],
+25 silly audit   'to-regex-range': [ '5.0.1' ],
+25 silly audit   'ts-api-utils': [ '1.4.3' ],
+25 silly audit   'tsconfig-paths': [ '3.15.0' ],
+25 silly audit   tslib: [ '2.8.1' ],
+25 silly audit   'type-check': [ '0.4.0' ],
+25 silly audit   'type-fest': [ '0.20.2' ],
+25 silly audit   'typed-array-buffer': [ '1.0.3' ],
+25 silly audit   'typed-array-byte-length': [ '1.0.3' ],
+25 silly audit   'typed-array-byte-offset': [ '1.0.4' ],
+25 silly audit   'typed-array-length': [ '1.0.7' ],
+25 silly audit   typescript: [ '5.5.3' ],
+25 silly audit   'unbox-primitive': [ '1.1.0' ],
+25 silly audit   'undici-types': [ '5.26.5' ],
+25 silly audit   'unrs-resolver': [ '1.11.1' ],
+25 silly audit   'uri-js': [ '4.4.1' ],
+25 silly audit   which: [ '2.0.2' ],
+25 silly audit   'which-boxed-primitive': [ '1.1.1' ],
+25 silly audit   'which-builtin-type': [ '1.2.1' ],
+25 silly audit   'which-collection': [ '1.0.2' ],
+25 silly audit   'which-typed-array': [ '1.1.20' ],
+25 silly audit   'word-wrap': [ '1.2.5' ],
+25 silly audit   'wrap-ansi': [ '8.1.0', '7.0.0' ],
+25 silly audit   wrappy: [ '1.0.2' ],
+25 silly audit   'yocto-queue': [ '0.1.0' ],
+25 silly audit   'react-icons': [ '5.5.0' ]
+25 silly audit }
+26 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-win32-x64-msvc
+27 silly reify mark deleted [
+27 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-win32-x64-msvc'
+27 silly reify ]
+28 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-win32-ia32-msvc
+29 silly reify mark deleted [
+29 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-win32-ia32-msvc'
+29 silly reify ]
+30 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-win32-arm64-msvc
+31 silly reify mark deleted [
+31 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-win32-arm64-msvc'
+31 silly reify ]
+32 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-wasm32-wasi
+33 silly reify mark deleted [
+33 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-wasm32-wasi'
+33 silly reify ]
+34 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@napi-rs/wasm-runtime
+35 silly reify mark deleted [
+35 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@napi-rs/wasm-runtime'
+35 silly reify ]
+36 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@emnapi/core
+37 silly reify mark deleted [ '/Users/admin/Documents/codex/ekklesias/node_modules/@emnapi/core' ]
+38 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@emnapi/runtime
+39 silly reify mark deleted [
+39 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@emnapi/runtime'
+39 silly reify ]
+40 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@tybys/wasm-util
+41 silly reify mark deleted [
+41 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@tybys/wasm-util'
+41 silly reify ]
+42 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@emnapi/wasi-threads
+43 silly reify mark deleted [
+43 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@emnapi/wasi-threads'
+43 silly reify ]
+44 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-x64-musl
+45 silly reify mark deleted [
+45 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-x64-musl'
+45 silly reify ]
+46 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-x64-gnu
+47 silly reify mark deleted [
+47 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-x64-gnu'
+47 silly reify ]
+48 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-s390x-gnu
+49 silly reify mark deleted [
+49 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-s390x-gnu'
+49 silly reify ]
+50 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-riscv64-musl
+51 silly reify mark deleted [
+51 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-riscv64-musl'
+51 silly reify ]
+52 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-riscv64-gnu
+53 silly reify mark deleted [
+53 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-riscv64-gnu'
+53 silly reify ]
+54 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-ppc64-gnu
+55 silly reify mark deleted [
+55 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-ppc64-gnu'
+55 silly reify ]
+56 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-arm64-musl
+57 silly reify mark deleted [
+57 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-arm64-musl'
+57 silly reify ]
+58 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-arm64-gnu
+59 silly reify mark deleted [
+59 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-arm64-gnu'
+59 silly reify ]
+60 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-arm-musleabihf
+61 silly reify mark deleted [
+61 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-arm-musleabihf'
+61 silly reify ]
+62 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-arm-gnueabihf
+63 silly reify mark deleted [
+63 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-linux-arm-gnueabihf'
+63 silly reify ]
+64 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-freebsd-x64
+65 silly reify mark deleted [
+65 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-freebsd-x64'
+65 silly reify ]
+66 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-darwin-arm64
+67 silly reify mark deleted [
+67 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-darwin-arm64'
+67 silly reify ]
+68 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-android-arm64
+69 silly reify mark deleted [
+69 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-android-arm64'
+69 silly reify ]
+70 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-android-arm-eabi
+71 silly reify mark deleted [
+71 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@unrs/resolver-binding-android-arm-eabi'
+71 silly reify ]
+72 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-win32-x64-msvc
+73 silly reify mark deleted [
+73 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-win32-x64-msvc'
+73 silly reify ]
+74 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-win32-ia32-msvc
+75 silly reify mark deleted [
+75 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-win32-ia32-msvc'
+75 silly reify ]
+76 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-win32-arm64-msvc
+77 silly reify mark deleted [
+77 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-win32-arm64-msvc'
+77 silly reify ]
+78 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-linux-x64-musl
+79 silly reify mark deleted [
+79 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-linux-x64-musl'
+79 silly reify ]
+80 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-linux-x64-gnu
+81 silly reify mark deleted [
+81 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-linux-x64-gnu'
+81 silly reify ]
+82 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-linux-arm64-musl
+83 silly reify mark deleted [
+83 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-linux-arm64-musl'
+83 silly reify ]
+84 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-linux-arm64-gnu
+85 silly reify mark deleted [
+85 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-linux-arm64-gnu'
+85 silly reify ]
+86 verbose reify failed optional dependency /Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-darwin-arm64
+87 silly reify mark deleted [
+87 silly reify   '/Users/admin/Documents/codex/ekklesias/node_modules/@next/swc-darwin-arm64'
+87 silly reify ]
+88 http cache @tybys/wasm-util@https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.1.tgz 0ms (cache hit)
+89 http cache @emnapi/runtime@https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.8.1.tgz 0ms (cache hit)
+90 http cache @emnapi/wasi-threads@https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.1.0.tgz 0ms (cache hit)
+91 http cache react-icons@https://registry.npmjs.org/react-icons/-/react-icons-5.5.0.tgz 0ms (cache hit)
+92 http cache @emnapi/core@https://registry.npmjs.org/@emnapi/core/-/core-1.8.1.tgz 0ms (cache hit)
+93 http cache @napi-rs/wasm-runtime@https://registry.npmjs.org/@napi-rs/wasm-runtime/-/wasm-runtime-0.2.12.tgz 0ms (cache hit)
+94 silly tarball no local data for react-icons@https://registry.npmjs.org/react-icons/-/react-icons-5.5.0.tgz. Extracting by manifest.
+95 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 269ms
+96 silly audit report {
+96 silly audit report   ajv: [
+96 silly audit report     {
+96 silly audit report       id: 1113214,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-2g4f-4pwh-qvx6',
+96 silly audit report       title: 'ajv has ReDoS when using `$data` option',
+96 silly audit report       severity: 'moderate',
+96 silly audit report       vulnerable_versions: '<8.18.0',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     }
+96 silly audit report   ],
+96 silly audit report   glob: [
+96 silly audit report     {
+96 silly audit report       id: 1109842,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-5j98-mcp5-4vw2',
+96 silly audit report       title: 'glob CLI: Command injection via -c/--cmd executes matches with shell:true',
+96 silly audit report       severity: 'high',
+96 silly audit report       vulnerable_versions: '>=10.2.0 <10.5.0',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     }
+96 silly audit report   ],
+96 silly audit report   next: [
+96 silly audit report     {
+96 silly audit report       id: 1099638,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-gp8f-8m3g-qvj9',
+96 silly audit report       title: 'Next.js Cache Poisoning',
+96 silly audit report       severity: 'high',
+96 silly audit report       vulnerable_versions: '>=14.0.0 <14.2.10',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1100421,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-g77x-44xx-532m',
+96 silly audit report       title: 'Denial of Service condition in Next.js image optimization',
+96 silly audit report       severity: 'moderate',
+96 silly audit report       vulnerable_versions: '>=10.0.0 <14.2.7',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1101438,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-7m27-7ghc-44w9',
+96 silly audit report       title: 'Next.js Allows a Denial of Service (DoS) with Server Actions',
+96 silly audit report       severity: 'moderate',
+96 silly audit report       vulnerable_versions: '>=14.0.0 <14.2.21',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1105461,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-3h52-269p-cp9r',
+96 silly audit report       title: 'Information exposure in Next.js dev server due to lack of origin verification',
+96 silly audit report       severity: 'low',
+96 silly audit report       vulnerable_versions: '>=13.0 <14.2.30',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1111391,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-mwv6-3258-q52c',
+96 silly audit report       title: 'Next Vulnerable to Denial of Service with Server Components',
+96 silly audit report       severity: 'high',
+96 silly audit report       vulnerable_versions: '>=13.3.0 <14.2.34',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1107226,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-g5qg-72qw-gw5v',
+96 silly audit report       title: 'Next.js Affected by Cache Key Confusion for Image Optimization API Routes',
+96 silly audit report       severity: 'moderate',
+96 silly audit report       vulnerable_versions: '>=0.9.9 <14.2.31',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1107420,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-7gfc-8cq8-jh5f',
+96 silly audit report       title: 'Next.js authorization bypass vulnerability',
+96 silly audit report       severity: 'high',
+96 silly audit report       vulnerable_versions: '>=9.5.5 <14.2.15',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1107512,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-4342-x723-ch2f',
+96 silly audit report       title: 'Next.js Improper Middleware Redirect Handling Leads to SSRF',
+96 silly audit report       severity: 'moderate',
+96 silly audit report       vulnerable_versions: '>=0.9.9 <14.2.32',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1107513,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-xv57-4mr9-wg8v',
+96 silly audit report       title: 'Next.js Content Injection Vulnerability for Image Optimization',
+96 silly audit report       severity: 'moderate',
+96 silly audit report       vulnerable_versions: '>=0.9.9 <14.2.31',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1112182,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-5j59-xgg2-r9c4',
+96 silly audit report       title: 'Next has a Denial of Service with Server Components - Incomplete Fix Follow-Up',
+96 silly audit report       severity: 'high',
+96 silly audit report       vulnerable_versions: '>=13.3.1-canary.0 <14.2.35',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1108291,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-qpjv-v59x-3qc4',
+96 silly audit report       title: 'Next.js Race Condition to Cache Poisoning',
+96 silly audit report       severity: 'low',
+96 silly audit report       vulnerable_versions: '>=0.9.9 <14.2.24',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1108953,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-f82v-jwr5-mffw',
+96 silly audit report       title: 'Authorization Bypass in Next.js Middleware',
+96 silly audit report       severity: 'critical',
+96 silly audit report       vulnerable_versions: '>=14.0.0 <14.2.25',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1112593,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-9g9p-9gw9-jx7f',
+96 silly audit report       title: 'Next.js self-hosted applications vulnerable to DoS via Image Optimizer remotePatterns configuration',
+96 silly audit report       severity: 'moderate',
+96 silly audit report       vulnerable_versions: '>=10.0.0 <15.5.10',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     },
+96 silly audit report     {
+96 silly audit report       id: 1112653,
+96 silly audit report       url: 'https://github.com/advisories/GHSA-h25m-26qc-wcjf',
+96 silly audit report       title: 'Next.js HTTP request deserialization can lead to DoS when using insecure React Server Components',
+96 silly audit report       severity: 'high',
+96 silly audit report       vulnerable_versions: '>=13.0.0 <15.0.8',
+96 silly audit report       cwe: [Array],
+96 silly audit report       cvss: [Object]
+96 silly audit report     }
+96 silly audit report   ]
+96 silly audit report }
+97 silly packumentCache corgi:https://registry.npmjs.org/ajv cache-miss
+98 silly packumentCache corgi:https://registry.npmjs.org/glob cache-miss
+99 silly packumentCache corgi:https://registry.npmjs.org/next cache-miss
+100 http fetch GET 200 https://registry.npmjs.org/glob 115ms (cache revalidated)
+101 silly packumentCache corgi:https://registry.npmjs.org/glob set size:198330 disposed:false
+102 http fetch GET 200 https://registry.npmjs.org/ajv 384ms (cache revalidated)
+103 silly packumentCache corgi:https://registry.npmjs.org/ajv set size:463222 disposed:false
+104 http fetch GET 200 https://registry.npmjs.org/next 483ms (cache revalidated)
+105 silly packumentCache corgi:https://registry.npmjs.org/next set size:23900741 disposed:false
+106 silly packumentCache corgi:https://registry.npmjs.org/@eslint%2feslintrc cache-miss
+107 silly packumentCache corgi:https://registry.npmjs.org/eslint cache-miss
+108 http fetch GET 200 https://registry.npmjs.org/eslint 80ms (cache revalidated)
+109 silly packumentCache corgi:https://registry.npmjs.org/eslint set size:1126678 disposed:false
+110 http fetch GET 200 https://registry.npmjs.org/@eslint%2feslintrc 103ms (cache revalidated)
+111 silly packumentCache corgi:https://registry.npmjs.org/@eslint%2feslintrc set size:80753 disposed:false
+112 silly packumentCache corgi:https://registry.npmjs.org/@next%2feslint-plugin-next cache-miss
+113 http fetch GET 200 https://registry.npmjs.org/@next%2feslint-plugin-next 119ms (cache revalidated)
+114 silly packumentCache corgi:https://registry.npmjs.org/@next%2feslint-plugin-next set size:3105210 disposed:false
+115 silly packumentCache corgi:https://registry.npmjs.org/@eslint-community%2feslint-utils cache-miss
+116 silly packumentCache corgi:https://registry.npmjs.org/@typescript-eslint%2fparser cache-miss
+117 silly packumentCache corgi:https://registry.npmjs.org/eslint-config-next cache-miss
+118 silly packumentCache corgi:https://registry.npmjs.org/eslint-import-resolver-typescript cache-miss
+119 silly packumentCache corgi:https://registry.npmjs.org/eslint-plugin-import cache-miss
+120 silly packumentCache corgi:https://registry.npmjs.org/eslint-plugin-jsx-a11y cache-miss
+121 silly packumentCache corgi:https://registry.npmjs.org/eslint-plugin-react cache-miss
+122 silly packumentCache corgi:https://registry.npmjs.org/eslint-plugin-react-hooks cache-miss
+123 http fetch GET 200 https://registry.npmjs.org/eslint-plugin-react-hooks 191ms (cache revalidated)
+124 silly packumentCache corgi:https://registry.npmjs.org/eslint-plugin-react-hooks set size:4042853 disposed:false
+125 http fetch GET 200 https://registry.npmjs.org/@eslint-community%2feslint-utils 293ms (cache revalidated)
+126 silly packumentCache corgi:https://registry.npmjs.org/@eslint-community%2feslint-utils set size:44347 disposed:false
+127 http fetch GET 200 https://registry.npmjs.org/eslint-import-resolver-typescript 294ms (cache revalidated)
+128 silly packumentCache corgi:https://registry.npmjs.org/eslint-import-resolver-typescript set size:138502 disposed:false
+129 http fetch GET 200 https://registry.npmjs.org/eslint-plugin-jsx-a11y 587ms (cache revalidated)
+130 silly packumentCache corgi:https://registry.npmjs.org/eslint-plugin-jsx-a11y set size:108835 disposed:false
+131 http fetch GET 200 https://registry.npmjs.org/eslint-plugin-import 595ms (cache revalidated)
+132 silly packumentCache corgi:https://registry.npmjs.org/eslint-plugin-import set size:238396 disposed:false
+133 http fetch GET 200 https://registry.npmjs.org/eslint-config-next 618ms (cache revalidated)
+134 silly packumentCache corgi:https://registry.npmjs.org/eslint-config-next set size:3705145 disposed:false
+135 http fetch GET 200 https://registry.npmjs.org/@typescript-eslint%2fparser 701ms (cache revalidated)
+136 silly packumentCache corgi:https://registry.npmjs.org/@typescript-eslint%2fparser set size:7891430 disposed:false
+137 http fetch GET 200 https://registry.npmjs.org/eslint-plugin-react 1117ms (cache revalidated)
+138 silly packumentCache corgi:https://registry.npmjs.org/eslint-plugin-react set size:309843 disposed:false
+139 http fetch GET 200 https://registry.npmjs.org/react-icons/-/react-icons-5.5.0.tgz 3377ms (cache miss)
+140 silly ADD node_modules/react-icons
+141 silly ADD node_modules/@unrs/resolver-binding-win32-x64-msvc
+142 silly ADD node_modules/@unrs/resolver-binding-win32-ia32-msvc
+143 silly ADD node_modules/@unrs/resolver-binding-win32-arm64-msvc
+144 silly ADD node_modules/@unrs/resolver-binding-wasm32-wasi
+145 silly ADD node_modules/@unrs/resolver-binding-linux-x64-musl
+146 silly ADD node_modules/@unrs/resolver-binding-linux-x64-gnu
+147 silly ADD node_modules/@unrs/resolver-binding-linux-s390x-gnu
+148 silly ADD node_modules/@unrs/resolver-binding-linux-riscv64-musl
+149 silly ADD node_modules/@unrs/resolver-binding-linux-riscv64-gnu
+150 silly ADD node_modules/@unrs/resolver-binding-linux-ppc64-gnu
+151 silly ADD node_modules/@unrs/resolver-binding-linux-arm64-musl
+152 silly ADD node_modules/@unrs/resolver-binding-linux-arm64-gnu
+153 silly ADD node_modules/@unrs/resolver-binding-linux-arm-musleabihf
+154 silly ADD node_modules/@unrs/resolver-binding-linux-arm-gnueabihf
+155 silly ADD node_modules/@unrs/resolver-binding-freebsd-x64
+156 silly ADD node_modules/@unrs/resolver-binding-darwin-arm64
+157 silly ADD node_modules/@unrs/resolver-binding-android-arm64
+158 silly ADD node_modules/@unrs/resolver-binding-android-arm-eabi
+159 silly ADD node_modules/@tybys/wasm-util
+160 silly ADD node_modules/@next/swc-win32-x64-msvc
+161 silly ADD node_modules/@next/swc-win32-ia32-msvc
+162 silly ADD node_modules/@next/swc-win32-arm64-msvc
+163 silly ADD node_modules/@next/swc-linux-x64-musl
+164 silly ADD node_modules/@next/swc-linux-x64-gnu
+165 silly ADD node_modules/@next/swc-linux-arm64-musl
+166 silly ADD node_modules/@next/swc-linux-arm64-gnu
+167 silly ADD node_modules/@next/swc-darwin-arm64
+168 silly ADD node_modules/@napi-rs/wasm-runtime
+169 silly ADD node_modules/@emnapi/wasi-threads
+170 silly ADD node_modules/@emnapi/runtime
+171 silly ADD node_modules/@emnapi/core
+172 verbose cwd /Users/admin/Documents/codex/ekklesias
+173 verbose os Darwin 24.6.0
+174 verbose node v24.9.0
+175 verbose npm  v11.6.0
+176 verbose exit 0
+177 info ok
