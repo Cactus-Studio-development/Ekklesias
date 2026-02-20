@@ -86,7 +86,7 @@ const schedulePorDefinir = [
 
 const visualImages = {
   hero: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1200&q=80",
-  ministerios: "https://images.unsplash.com/photo-1516455590571-18256e5bb9ff?w=1200&q=80",
+  ministerios: "https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=1200&q=80",
   oracion: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&q=80",
 };
 
