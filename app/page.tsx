@@ -21,6 +21,7 @@ import {
 } from "react-icons/fi";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { Toaster, toast } from "sonner";
+import { Skeleton } from "./components/Skeleton";
 
 const WELCOME_LOTTIE_URL = "https://assets3.lottiefiles.com/packages/lf20_UJNc2t.json";
 const WELCOME_DURATION_MS = 4000;
@@ -103,7 +104,13 @@ const prayerVerse = {
 export default function HomePage() {
   const [showWelcome, setShowWelcome] = useState(true);
   const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
+  const [heroImageLoaded, setHeroImageLoaded] = useState(false);
+  const [galleryLoaded, setGalleryLoaded] = useState<Record<string, boolean>>({});
   const welcomeDone = useRef(false);
+
+  const markGalleryLoaded = useCallback((src: string) => {
+    setGalleryLoaded((prev) => ({ ...prev, [src]: true }));
+  }, []);
 
   const closeLightbox = useCallback(() => setLightbox(null), []);
 
@@ -195,8 +202,13 @@ export default function HomePage() {
       </header>
 
       <section className="hero tone-1 hero-elegant">
-        <div className="hero-bg-img" aria-hidden="true" style={{ position: "relative" }}>
-          <Image src={visualImages.hero} alt="" fill style={{ objectFit: "cover" }} />
+        <div className={`hero-bg-img ${heroImageLoaded ? "img-loaded" : ""}`} aria-hidden="true">
+          <Skeleton className="hero-bg-skeleton" variant="rect" />
+          <img
+            src={visualImages.hero}
+            alt=""
+            onLoad={() => setHeroImageLoaded(true)}
+          />
         </div>
         <div className="hero-main">
           <p className="hero-tag">Comunidad Evangélica</p>
@@ -306,12 +318,18 @@ export default function HomePage() {
               className={`image-grid-item image-grid-item--${img.placement}`}
               onClick={() => setLightbox({ src: img.src, title: img.title })}
             >
-              <Image
+              {!galleryLoaded[img.src] && (
+                <Skeleton className="image-grid-skeleton" variant="rect" />
+              )}
+              <img
                 src={img.src}
                 alt={img.title}
                 className="image-grid-img"
-                fill
-                style={{ objectFit: "cover" }}
+                onLoad={() => markGalleryLoaded(img.src)}
+                onError={(e) => {
+                  e.currentTarget.src = placeholderSvg(img.title);
+                  markGalleryLoaded(img.src);
+                }}
               />
               <div className="image-grid-caption">
                 <FiImage className="image-grid-icon" aria-hidden="true" />
