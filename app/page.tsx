@@ -1,7 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Player } from "@lottiefiles/react-lottie-player";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+
+const Player = dynamic(
+  () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
+  { ssr: false }
+);
 import {
   FiBookOpen,
   FiCalendar,
@@ -236,8 +242,8 @@ export default function HomePage() {
       </section>
 
       <section className="panel tone-2 section-soft" id="ministerios">
-        <div className="ministerios-banner">
-          <img src={visualImages.ministerios} alt="" />
+        <div className="ministerios-banner" style={{ position: "relative" }}>
+          <Image src={visualImages.ministerios} alt="" fill style={{ objectFit: "cover" }} />
         </div>
         <div className="section-head">
           <h2>Ministerios activos</h2>
@@ -350,10 +356,12 @@ export default function HomePage() {
               >
                 <FiX aria-hidden="true" />
               </button>
-              <img
+              <Image
                 src={lightbox.src}
                 alt={lightbox.title}
                 className="lightbox-img"
+                fill
+                style={{ objectFit: "contain" }}
               />
               <p className="lightbox-caption">{lightbox.title}</p>
             </div>
@@ -362,8 +370,8 @@ export default function HomePage() {
       </section>
 
       <section className="panel prayer tone-5" id="oracion">
-        <div className="prayer-bg" aria-hidden="true">
-          <img src={visualImages.oracion} alt="" />
+        <div className="prayer-bg" aria-hidden="true" style={{ position: "relative" }}>
+          <Image src={visualImages.oracion} alt="" fill style={{ objectFit: "cover" }} />
           <span className="prayer-bg-overlay" />
         </div>
         <div className="prayer-content">
@@ -372,7 +380,7 @@ export default function HomePage() {
           </h2>
           <p className="prayer-tagline">Unidos en oración, crecemos en fe.</p>
           <blockquote className="prayer-verse">
-            <span className="prayer-verse-text">"{prayerVerse.text}"</span>
+            <span className="prayer-verse-text">&ldquo;{prayerVerse.text}&rdquo;</span>
             <cite className="prayer-verse-ref">{prayerVerse.ref}</cite>
           </blockquote>
           <p className="faith-message">
@@ -406,12 +414,14 @@ export default function HomePage() {
             <p className="sponsor-stores-label">Disponible próximamente</p>
             <div className="sponsor-badges">
               <span className="sponsor-badge" aria-hidden="true">
-                <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Disponible en App Store" />
+                <Image src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Disponible en App Store" width={160} height={53} />
               </span>
-              <img
+              <Image
                 src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
                 alt="Disponible en Google Play"
                 className="sponsor-badge-img"
+                width={200}
+                height={77}
               />
             </div>
           </div>
