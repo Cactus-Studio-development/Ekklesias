@@ -15,8 +15,10 @@ import {
   FiExternalLink,
   FiHeart,
   FiImage,
+  FiPlay,
   FiUserCheck,
   FiUsers,
+  FiVideo,
   FiX,
 } from "react-icons/fi";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
@@ -101,12 +103,63 @@ const prayerVerse = {
   ref: "Filipenses 4:6",
 };
 
+type MediaItem =
+  | { type: "image"; src: string; title: string }
+  | { type: "video"; src: string; title: string }
+  | { type: "youtube"; src: string; title: string };
+
+const MEDIA_PLACEMENTS = ["large", "tall", "small", "small", "wide", "wide"] as const;
+const YOUTUBE_ITEM: MediaItem = {
+  type: "youtube",
+  src: "https://www.youtube.com/watch?v=iQpVoxPDpHw",
+  title: "Video",
+};
+
+function getYoutubeId(url: string): string | null {
+  const m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+function getYoutubeThumbnail(id: string): string {
+  return `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+}
+
 export default function HomePage() {
   const [showWelcome, setShowWelcome] = useState(true);
   const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null);
   const [heroImageLoaded, setHeroImageLoaded] = useState(false);
   const [galleryLoaded, setGalleryLoaded] = useState<Record<string, boolean>>({});
+  const [audiovisualOpen, setAudiovisualOpen] = useState(false);
+  const [sidebarReady, setSidebarReady] = useState(false);
+  const [mediaPreview, setMediaPreview] = useState<MediaItem | null>(null);
+  const [mediaItems, setMediaItems] = useState<MediaItem[]>([]);
+  const [mediaLoading, setMediaLoading] = useState(false);
   const welcomeDone = useRef(false);
+
+  const closeAudiovisual = useCallback(() => setAudiovisualOpen(false), []);
+  const closeMediaPreview = useCallback(() => setMediaPreview(null), []);
+
+  useEffect(() => {
+    if (!audiovisualOpen) setSidebarReady(false);
+    else {
+      const id = requestAnimationFrame(() => {
+        requestAnimationFrame(() => setSidebarReady(true));
+      });
+      return () => cancelAnimationFrame(id);
+    }
+  }, [audiovisualOpen]);
+
+  useEffect(() => {
+    if (!audiovisualOpen) return;
+    setMediaLoading(true);
+    fetch("/api/audiovisual")
+      .then((res) => res.json())
+      .then((data: { items: MediaItem[] }) => {
+        const list = data.items ?? [];
+        setMediaItems([...list, YOUTUBE_ITEM]);
+      })
+      .finally(() => setMediaLoading(false));
+  }, [audiovisualOpen]);
 
   const markGalleryLoaded = useCallback((src: string) => {
     setGalleryLoaded((prev) => ({ ...prev, [src]: true }));
@@ -142,6 +195,28 @@ export default function HomePage() {
       document.body.style.overflow = "";
     };
   }, [lightbox, closeLightbox]);
+
+  useEffect(() => {
+    if (!audiovisualOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeAudiovisual();
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [audiovisualOpen, closeAudiovisual]);
+
+  useEffect(() => {
+    if (!mediaPreview) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeMediaPreview();
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [mediaPreview, closeMediaPreview]);
 
   const notify = (message: string) => {
     toast.success(message);
@@ -427,6 +502,150 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <button
+        type="button"
+        className="fab-audiovisual"
+        onClick={() => setAudiovisualOpen(true)}
+        aria-label="Abrir contenido audiovisual"
+      >
+        <FiVideo aria-hidden="true" />
+      </button>
+
+      {audiovisualOpen && (
+        <>
+          <div
+            className="media-sidebar-backdrop"
+            onClick={closeAudiovisual}
+            aria-hidden="true"
+          />
+          <aside
+            className={`media-sidebar ${sidebarReady ? "media-sidebar--open" : ""}`}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Contenido audiovisual"
+          >
+            <div className="media-sidebar-header">
+              <h2>Contenido audiovisual</h2>
+              <button
+                type="button"
+                className="media-sidebar-close"
+                onClick={closeAudiovisual}
+                aria-label="Cerrar"
+              >
+                <FiX aria-hidden="true" />
+              </button>
+            </div>
+            <div className="media-sidebar-content">
+              {mediaLoading ? (
+                <div className="media-sidebar-loading">Cargando…</div>
+              ) : mediaItems.length === 0 ? (
+                <div className="media-sidebar-empty">Añade fotos en <code>public/audiovisual/fotos</code> y videos en <code>public/audiovisual/videos</code>.</div>
+              ) : (
+                mediaItems.map((item, i) => {
+                  const placement = MEDIA_PLACEMENTS[i % MEDIA_PLACEMENTS.length];
+                  const isYoutube = item.type === "youtube";
+                  const ytId = isYoutube ? getYoutubeId(item.src) : null;
+                  return (
+                    <button
+                      key={`${item.type}-${item.src}-${i}`}
+                      type="button"
+                      className={`media-sidebar-item media-sidebar-item--${placement}`}
+                      onClick={() => setMediaPreview(item)}
+                    >
+                      <span className="media-sidebar-item-inner">
+                        {item.type === "image" && (
+                          <img src={item.src} alt={item.title} className="media-sidebar-img" />
+                        )}
+                        {item.type === "video" && (
+                          <video
+                            src={item.src}
+                            className="media-sidebar-video"
+                            title={item.title}
+                            muted
+                            playsInline
+                            preload="metadata"
+                          >
+                            Tu navegador no soporta video.
+                          </video>
+                        )}
+                        {item.type === "youtube" && ytId && (
+                          <img
+                            src={getYoutubeThumbnail(ytId)}
+                            alt={item.title}
+                            className="media-sidebar-img"
+                          />
+                        )}
+                        {(item.type === "video" || item.type === "youtube") && (
+                          <span className="media-sidebar-play" aria-hidden="true">
+                            <FiPlay />
+                          </span>
+                        )}
+                        <span className="media-sidebar-caption">
+                          <FiImage aria-hidden="true" className="media-sidebar-caption-icon" />
+                          {item.title}
+                        </span>
+                      </span>
+                    </button>
+                  );
+                })
+              )}
+            </div>
+          </aside>
+
+      {mediaPreview && (
+        <div
+          className="media-modal-backdrop"
+          onClick={closeMediaPreview}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Vista ampliada"
+        >
+          <div className="media-modal-card" onClick={(e) => e.stopPropagation()}>
+            <div className="media-modal-header">
+              <span className="media-modal-title">{mediaPreview.title}</span>
+              <button
+                type="button"
+                className="media-modal-close"
+                onClick={closeMediaPreview}
+                aria-label="Cerrar"
+              >
+                <FiX aria-hidden="true" />
+              </button>
+            </div>
+            <div className="media-modal-body">
+              {mediaPreview.type === "image" && (
+                <img src={mediaPreview.src} alt={mediaPreview.title} className="media-modal-media" />
+              )}
+              {mediaPreview.type === "video" && (
+                <video
+                  src={mediaPreview.src}
+                  controls
+                  autoPlay
+                  className="media-modal-media"
+                  title={mediaPreview.title}
+                >
+                  Tu navegador no soporta video.
+                </video>
+              )}
+              {mediaPreview.type === "youtube" && (() => {
+                const id = getYoutubeId(mediaPreview.src);
+                return id ? (
+                  <iframe
+                    className="media-modal-iframe"
+                    src={`https://www.youtube.com/embed/${id}?autoplay=1`}
+                    title={mediaPreview.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                ) : null;
+              })()}
+            </div>
+          </div>
+        </div>
+      )}
+        </>
+      )}
     </main>
     </>
   );
