@@ -18,7 +18,6 @@ import {
   FiPlay,
   FiUserCheck,
   FiUsers,
-  FiVideo,
   FiX,
 } from "react-icons/fi";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
@@ -509,7 +508,7 @@ export default function HomePage() {
         onClick={() => setAudiovisualOpen(true)}
         aria-label="Abrir contenido audiovisual"
       >
-        <FiVideo aria-hidden="true" />
+        <FiImage aria-hidden="true" />
       </button>
 
       {audiovisualOpen && (
