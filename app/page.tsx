@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
+import { FUNCTIONS_URL } from "@/lib/firebase";
 
 const Player = dynamic(
   () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
@@ -41,22 +42,10 @@ const galleryImages = [
   { src: "/image/06.jpeg", title: "Ministerios", placement: "wide" },
 ];
 
-const ministries = [
-  {
-    title: "Discipulado",
-    text: "Rutas semanales para crecer en la Palabra con grupos pequeños y acompañamiento pastoral.",
-    icon: FiBookOpen,
-  },
-  {
-    title: "Jóvenes y Familia",
-    text: "Espacios activos para fortalecer matrimonios, padres e hijos bajo principios bíblicos.",
-    icon: FiUsers,
-  },
-  {
-    title: "Misión y Servicio",
-    text: "Salidas comunitarias para evangelismo, ayuda social y oración por la ciudad.",
-    icon: FiHeart,
-  },
+const DEFAULT_MINISTRIES = [
+  { id: "d1", title: "Discipulado", text: "Rutas semanales para crecer en la Palabra con grupos pequeños y acompañamiento pastoral.", icon: "book" as const },
+  { id: "d2", title: "Jóvenes y Familia", text: "Espacios activos para fortalecer matrimonios, padres e hijos bajo principios bíblicos.", icon: "users" as const },
+  { id: "d3", title: "Misión y Servicio", text: "Salidas comunitarias para evangelismo, ayuda social y oración por la ciudad.", icon: "heart" as const },
 ];
 
 const schedule = [
@@ -76,6 +65,24 @@ const WEEK_DAYS = [
   { key: "Sábado", short: "Sáb" },
   { key: "Domingo", short: "Dom" },
 ];
+
+const ICON_MAP = { heart: FiHeart, users: FiUsers } as const;
+const MINISTRY_ICON_MAP = { book: FiBookOpen, users: FiUsers, heart: FiHeart } as const;
+
+function buildWeekCalendarFromSlots(slots: Array<{ day: string; event: string; hour: string; icon?: string }>) {
+  return WEEK_DAYS.map(({ key, short }) => ({
+    dayName: key,
+    shortName: short,
+    events: slots
+      .filter((s) => s.day === key)
+      .map((s) => ({
+        day: s.day,
+        event: s.event,
+        hour: s.hour,
+        icon: ICON_MAP[(s.icon as keyof typeof ICON_MAP) ?? "users"] ?? FiUsers,
+      })),
+  }));
+}
 
 function buildWeekCalendar() {
   return WEEK_DAYS.map(({ key, short }) => ({
@@ -97,10 +104,12 @@ const visualImages = {
   oracion: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=800&q=80",
 };
 
-const prayerVerse = {
+const DEFAULT_VERSE = {
   text: "No se inquieten por nada; más bien, en toda ocasión, con oración y ruego, presenten sus peticiones a Dios y denle gracias.",
   ref: "Filipenses 4:6",
 };
+const DEFAULT_ORACION_MSG =
+  "Cree, ora y permanece firme: Dios sigue obrando hoy. Únete a nuestra comunidad en redes para compartir palabra, esperanza y testimonios de fe.";
 
 type MediaItem =
   | { type: "image"; src: string; title: string }
@@ -135,6 +144,17 @@ export default function HomePage() {
   const [mediaLoading, setMediaLoading] = useState(false);
   const welcomeDone = useRef(false);
 
+  type EventoCard = { id: string; title?: string; description?: string; fecha?: string; imageUrl?: string | null };
+  const [eventos, setEventos] = useState<EventoCard[]>([]);
+  const [informacion, setInformacion] = useState<{ title?: string; body?: string }>({});
+  const [oracionData, setOracionData] = useState<{ verseText?: string; verseRef?: string; message?: string }>({});
+  const GALLERY_PLACEMENTS = ["large", "tall", "small", "small", "wide", "wide"] as const;
+  const [multimediaGallery, setMultimediaGallery] = useState<Array<{ src: string; title: string; placement: string }>>([]);
+  type AgendaSlot = { day: string; event: string; hour: string; icon?: string };
+  const [agendaData, setAgendaData] = useState<{ slots: AgendaSlot[]; porDefinir: string[] } | null>(null);
+  type MinisterioItem = { id: string; title?: string; text?: string; icon?: string };
+  const [ministeriosData, setMinisteriosData] = useState<MinisterioItem[]>([]);
+
   const closeAudiovisual = useCallback(() => setAudiovisualOpen(false), []);
   const closeMediaPreview = useCallback(() => setMediaPreview(null), []);
 
@@ -151,14 +171,71 @@ export default function HomePage() {
   useEffect(() => {
     if (!audiovisualOpen) return;
     setMediaLoading(true);
-    fetch("/api/audiovisual")
-      .then((res) => res.json())
-      .then((data: { items: MediaItem[] }) => {
+    Promise.all([
+      fetch("/api/audiovisual").then((res) => res.json()).then((data: { items?: MediaItem[] }) => data.items ?? []),
+      fetch(`${FUNCTIONS_URL}/multimedia`).then((res) => res.json()).then((data: { items?: Array<{ url?: string; title?: string }> }) => {
         const list = data.items ?? [];
-        setMediaItems([...list, YOUTUBE_ITEM]);
+        return list.map((item): MediaItem => ({ type: "image", src: item.url ?? "", title: item.title ?? "Imagen" }));
+      }).catch(() => []),
+    ])
+      .then(([localItems, multimediaItems]) => {
+        const combined = [...multimediaItems, ...localItems, YOUTUBE_ITEM];
+        setMediaItems(combined);
       })
       .finally(() => setMediaLoading(false));
   }, [audiovisualOpen]);
+
+  useEffect(() => {
+    fetch(`${FUNCTIONS_URL}/eventos`)
+      .then((res) => res.json())
+      .then((data: { eventos?: EventoCard[] }) => setEventos(data.eventos ?? []))
+      .catch(() => setEventos([]));
+  }, []);
+  useEffect(() => {
+    fetch(`${FUNCTIONS_URL}/informacion`)
+      .then((res) => res.json())
+      .then((data: { title?: string; body?: string }) => setInformacion(data))
+      .catch(() => setInformacion({}));
+  }, []);
+  useEffect(() => {
+    fetch(`${FUNCTIONS_URL}/oracion`)
+      .then((res) => res.json())
+      .then((data: { verseText?: string; verseRef?: string; message?: string }) => setOracionData(data))
+      .catch(() => setOracionData({}));
+  }, []);
+  useEffect(() => {
+    fetch(`${FUNCTIONS_URL}/multimedia`)
+      .then((res) => res.json())
+      .then((data: { items?: Array<{ url?: string; title?: string }> }) => {
+        const list = data.items ?? [];
+        setMultimediaGallery(
+          list.map((item, i) => ({
+            src: item.url ?? "",
+            title: item.title ?? "Imagen",
+            placement: GALLERY_PLACEMENTS[i % GALLERY_PLACEMENTS.length],
+          }))
+        );
+      })
+      .catch(() => setMultimediaGallery([]));
+  }, []);
+  useEffect(() => {
+    fetch(`${FUNCTIONS_URL}/agenda`)
+      .then((res) => res.json())
+      .then((data: { slots?: AgendaSlot[]; porDefinir?: string[] }) => {
+        if (Array.isArray(data.slots) && data.slots.length > 0) {
+          setAgendaData({ slots: data.slots, porDefinir: Array.isArray(data.porDefinir) ? data.porDefinir : [] });
+        } else {
+          setAgendaData(null);
+        }
+      })
+      .catch(() => setAgendaData(null));
+  }, []);
+  useEffect(() => {
+    fetch(`${FUNCTIONS_URL}/ministerios`)
+      .then((res) => res.json())
+      .then((data: { items?: MinisterioItem[] }) => setMinisteriosData(Array.isArray(data.items) ? data.items : []))
+      .catch(() => setMinisteriosData([]));
+  }, []);
 
   const markGalleryLoaded = useCallback((src: string) => {
     setGalleryLoaded((prev) => ({ ...prev, [src]: true }));
@@ -265,6 +342,9 @@ export default function HomePage() {
           >
             <FiCalendar aria-hidden="true" /> Eventos
           </a>
+          <a href="#informacion" onClick={() => notify("Información")}>
+            Información
+          </a>
           <a href="#oracion" onClick={() => notify("Entrando al muro de oración")}
           >
             <FiUserCheck aria-hidden="true" /> Oración
@@ -324,10 +404,10 @@ export default function HomePage() {
           <p>Encuentra el área donde Dios te llama a servir y crecer.</p>
         </div>
         <div className="card-grid">
-          {ministries.map((item) => {
-            const Icon = item.icon;
+          {(ministeriosData.length > 0 ? ministeriosData : DEFAULT_MINISTRIES).map((item) => {
+            const Icon = MINISTRY_ICON_MAP[(item.icon as keyof typeof MINISTRY_ICON_MAP) ?? "users"] ?? FiUsers;
             return (
-              <article key={item.title} className="card">
+              <article key={item.id} className="card">
                 <Icon className="card-icon" aria-hidden="true" />
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
@@ -344,9 +424,30 @@ export default function HomePage() {
           </h2>
           <p>Conecta con la comunidad en reuniones presenciales y online.</p>
         </div>
+        {eventos.length > 0 && (
+          <div className="eventos-cards-wrap">
+            <h3 className="eventos-cards-title">Próximos eventos</h3>
+            <div className="eventos-cards-grid">
+              {eventos.map((ev) => (
+                <article key={ev.id} className="eventos-card">
+                  {ev.imageUrl && (
+                    <div className="eventos-card__img-wrap">
+                      <img src={ev.imageUrl} alt="" className="eventos-card__img" />
+                    </div>
+                  )}
+                  <div className="eventos-card__body">
+                    <h4 className="eventos-card__title">{ev.title}</h4>
+                    {ev.fecha && <span className="eventos-card__fecha">{ev.fecha}</span>}
+                    {ev.description && <p className="eventos-card__desc">{ev.description}</p>}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="calendar-wrap">
           <div className="calendar-grid">
-            {buildWeekCalendar().map((day) => (
+            {(agendaData?.slots?.length ? buildWeekCalendarFromSlots(agendaData.slots) : buildWeekCalendar()).map((day) => (
               <div key={day.dayName} className="calendar-day">
                 <div className="calendar-day-header">{day.shortName}</div>
                 <div className="calendar-day-cell">
@@ -372,12 +473,21 @@ export default function HomePage() {
         <div className="agenda-tbd">
           <p className="agenda-tbd-title">Por definir</p>
           <ul className="agenda-tbd-list">
-            {schedulePorDefinir.map((item) => (
+            {(agendaData?.porDefinir?.length ? agendaData.porDefinir : schedulePorDefinir).map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
         </div>
       </section>
+
+      {(informacion.title || informacion.body) && (
+        <section className="panel tone-2 section-soft" id="informacion">
+          <div className="section-head">
+            <h2>{informacion.title || "Información"}</h2>
+            {informacion.body && <div className="section-info-body" dangerouslySetInnerHTML={{ __html: informacion.body.replace(/\n/g, "<br />") }} />}
+          </div>
+        </section>
+      )}
 
       <section className="panel tone-4 section-soft" id="galeria">
         <div className="section-head">
@@ -385,7 +495,7 @@ export default function HomePage() {
           <p>Momentos de nuestra comunidad.</p>
         </div>
         <div className="image-grid">
-          {galleryImages.map((img) => (
+          {(multimediaGallery.length > 0 ? multimediaGallery : galleryImages).map((img) => (
             <button
               key={img.src}
               type="button"
@@ -454,12 +564,11 @@ export default function HomePage() {
           </h2>
           <p className="prayer-tagline">Unidos en oración, crecemos en fe.</p>
           <blockquote className="prayer-verse">
-            <span className="prayer-verse-text">&ldquo;{prayerVerse.text}&rdquo;</span>
-            <cite className="prayer-verse-ref">{prayerVerse.ref}</cite>
+            <span className="prayer-verse-text">&ldquo;{oracionData.verseText || DEFAULT_VERSE.text}&rdquo;</span>
+            <cite className="prayer-verse-ref">{oracionData.verseRef || DEFAULT_VERSE.ref}</cite>
           </blockquote>
           <p className="faith-message">
-            Cree, ora y permanece firme: Dios sigue obrando hoy. Únete a nuestra comunidad en redes para compartir
-            palabra, esperanza y testimonios de fe.
+            {oracionData.message || DEFAULT_ORACION_MSG}
           </p>
           <div className="social-links" aria-label="Redes sociales de Ekklesias">
           <a href="https://www.facebook.com/share/1JB3kGon3E/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
@@ -539,7 +648,7 @@ export default function HomePage() {
               {mediaLoading ? (
                 <div className="media-sidebar-loading">Cargando…</div>
               ) : mediaItems.length === 0 ? (
-                <div className="media-sidebar-empty">Añade fotos en <code>public/audiovisual/fotos</code> y videos en <code>public/audiovisual/videos</code>.</div>
+                <div className="media-sidebar-empty">Publica imágenes desde el panel Admin → Multimedia, o añade fotos en <code>public/audiovisual/fotos</code> y videos en <code>public/audiovisual/videos</code>.</div>
               ) : (
                 mediaItems.map((item, i) => {
                   const placement = MEDIA_PLACEMENTS[i % MEDIA_PLACEMENTS.length];
