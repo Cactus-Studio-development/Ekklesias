@@ -1,87 +1,78 @@
 :root {
-  --green-1: #5aab07;
-  --green-2: #66b006;
-  --green-3: #72b810;
-  --green-4: #89d931;
-  --green-5: #a6e159;
-  --green-soft-1: #86b65a;
-  --green-soft-2: #92be60;
-  --green-soft-3: #9fc76e;
-  --green-soft-4: #b0d283;
-  --green-soft-5: #c1de99;
-  --primary: var(--green-3);
+  /* Paleta guía: #C1FF72, #6EB450, #EAEBE4, #333333, #C2B9A8 + acento #80E34F, fondo #EEF0EB */
+  --green-lime: #C1FF72;
+  --green-medium: #6EB450;
+  --green-accent: #80E34F;
+  --green-1: #6EB450;
+  --green-2: #5a9e3d;
+  --green-3: #6EB450;
+  --green-4: #80E34F;
+  --green-5: #C1FF72;
+  --green-soft-1: #8bc46a;
+  --green-soft-2: #9ecd7a;
+  --green-soft-3: #b1d68a;
+  --green-soft-4: #c4df9a;
+  --green-soft-5: #d7e8aa;
+  --primary: var(--green-medium);
   --primary-dark: var(--green-2);
-  --secondary: #eff8e2;
-  --accent: var(--green-4);
-  --accent-soft: #f4faeb;
-  --bg: #f6f8f3;
-  --bg-accent: #eff4e8;
+  --secondary: #EAEBE4;
+  --accent: var(--green-accent);
+  --accent-soft: #e8f5e0;
+  --bg: #EEF0EB;
+  --bg-accent: #EAEBE4;
   --paper: #ffffff;
-  --text: #14200d;
-  --muted: #415236;
-  --line: #d8e5cb;
+  --text: #333333;
+  --muted: #5c5c5c;
+  --line: #C2B9A8;
   --tone-1: var(--green-1);
   --tone-2: var(--green-2);
   --tone-3: var(--green-3);
   --tone-4: var(--green-4);
   --tone-5: var(--green-5);
-  --tone-1-soft: #f3f8ed;
-  --tone-2-soft: #f1f8ea;
-  --tone-3-soft: #eff8e7;
-  --tone-4-soft: #edf7e4;
-  --tone-5-soft: #ebf6e1;
-  --topbar-bg: #15220e;
-  --topbar-line: #2d4520;
-  --nav-link: #edf6e4;
-  --nav-link-hover-bg: #2f4a22;
-  --surface-soft: #f7fbf1;
-  --social-border: #cadfb8;
-  --hero-overlay: rgba(0, 0, 0, 0.25);
+  --tone-1-soft: #e8f0e4;
+  --tone-2-soft: #e6efe2;
+  --tone-3-soft: #e4eee0;
+  --tone-4-soft: #e2edde;
+  --tone-5-soft: #e0ecdc;
+  --topbar-bg: #333333;
+  --topbar-line: #444444;
+  --nav-link: #EAEBE4;
+  --nav-link-hover-bg: #6EB450;
+  --surface-soft: #EAEBE4;
+  --social-border: #C2B9A8;
+  --taupe: #C2B9A8;
+  --hero-overlay: rgba(0, 0, 0, 0.2);
   --overlay-image: linear-gradient(
     180deg,
-    rgba(10, 18, 5, 0.22) 0%,
-    rgba(10, 18, 5, 0.56) 100%
+    rgba(51, 51, 51, 0.15) 0%,
+    rgba(51, 51, 51, 0.45) 100%
   );
   --vertical-bands: linear-gradient(
     90deg,
     var(--green-1) 0%,
-    var(--green-1) 18%,
-    var(--green-2) 24%,
-    var(--green-2) 38%,
-    var(--green-3) 44%,
-    var(--green-3) 58%,
-    var(--green-4) 64%,
-    var(--green-4) 78%,
-    var(--green-5) 84%,
+    var(--green-1) 25%,
+    var(--green-3) 50%,
+    var(--green-4) 75%,
     var(--green-5) 100%
   );
   --vertical-bands-soft: linear-gradient(
     90deg,
     var(--green-soft-1) 0%,
-    var(--green-soft-1) 18%,
-    var(--green-soft-2) 24%,
-    var(--green-soft-2) 38%,
-    var(--green-soft-3) 44%,
-    var(--green-soft-3) 58%,
-    var(--green-soft-4) 64%,
-    var(--green-soft-4) 78%,
-    var(--green-soft-5) 84%,
+    var(--green-soft-2) 25%,
+    var(--green-soft-3) 50%,
+    var(--green-soft-4) 75%,
     var(--green-soft-5) 100%
   );
   --linear-green: linear-gradient(
     90deg,
-    #5aab07 0%,
-    #66b006 25%,
-    #72b810 50%,
-    #89d931 75%,
-    #a6e159 100%
+    #6EB450 0%,
+    #80E34F 50%,
+    #C1FF72 100%
   );
   --linear-green-soft: linear-gradient(
     90deg,
     var(--green-soft-1),
-    var(--green-soft-2),
     var(--green-soft-3),
-    var(--green-soft-4),
     var(--green-soft-5)
   );
 }
@@ -131,13 +122,17 @@ body {
   font-family: var(--font-body), sans-serif;
   color: var(--text);
   background:
-    linear-gradient(180deg, rgba(246, 248, 243, 0.74) 0%, rgba(239, 244, 232, 0.9) 100%),
+    linear-gradient(180deg, rgba(238, 240, 235, 0.9) 0%, rgba(234, 235, 228, 0.95) 100%),
     url("/abstract-bg.svg");
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
 }
 
 /* --- Welcome overlay (Lottie) --- */
@@ -148,7 +143,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(160deg, #15220e 0%, #1e3314 50%, #243818 100%);
+  background: linear-gradient(160deg, #333333 0%, #2a2a2a 50%, #1f1f1f 100%);
   animation: welcomeFadeIn 0.5s ease;
 }
 
@@ -188,8 +183,9 @@ body {
 }
 
 .welcome-sub {
-  font-size: 0.95rem;
-  color: #a6e159;
+  font-family: var(--font-script), cursive;
+  font-size: 1.35rem;
+  color: var(--green-accent);
   margin: 0;
   animation: welcomeTitleIn 0.5s ease 0.4s both;
 }
