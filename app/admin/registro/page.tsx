@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, FUNCTIONS_URL } from "@/lib/firebase";
+import { auth, getFunctionUrl } from "@/lib/firebase";
 import { Toaster, toast } from "sonner";
 import Link from "next/link";
 
@@ -30,7 +30,7 @@ export default function AdminRegistroPage() {
     try {
       const userCred = await createUserWithEmailAndPassword(auth, email.trim(), password);
       const token = await userCred.user.getIdToken();
-      const res = await fetch(`${FUNCTIONS_URL}/registerAdmin`, {
+      const res = await fetch(getFunctionUrl("registerAdmin"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token }),

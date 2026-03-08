@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { auth, FUNCTIONS_URL } from "@/lib/firebase";
+import { auth, getFunctionUrl } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { Toaster, toast } from "sonner";
@@ -32,7 +32,7 @@ export default function AdminAgendaPage() {
 
   function load() {
     setLoading(true);
-    fetch(`${FUNCTIONS_URL}/agenda`)
+    fetch(getFunctionUrl("agenda"))
       .then((res) => res.json())
       .then((data: { slots?: Slot[]; porDefinir?: string[] }) => {
         setSlots(Array.isArray(data.slots) ? data.slots : []);
@@ -101,7 +101,7 @@ export default function AdminAgendaPage() {
     setSaving(true);
     try {
       const token = await u.getIdToken();
-      const res = await fetch(`${FUNCTIONS_URL}/agenda`, {
+      const res = await fetch(getFunctionUrl("agenda"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

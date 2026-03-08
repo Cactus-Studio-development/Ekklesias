@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import dynamic from "next/dynamic";
-import { FUNCTIONS_URL } from "@/lib/firebase";
+import { getFunctionUrl } from "@/lib/firebase";
 
 const Player = dynamic(
   () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
@@ -173,7 +173,7 @@ export default function HomePage() {
     setMediaLoading(true);
     Promise.all([
       fetch("/api/audiovisual").then((res) => res.json()).then((data: { items?: MediaItem[] }) => data.items ?? []),
-      fetch(`${FUNCTIONS_URL}/multimedia`).then((res) => res.json()).then((data: { items?: Array<{ url?: string; title?: string }> }) => {
+      fetch(getFunctionUrl("multimedia")).then((res) => res.json()).then((data: { items?: Array<{ url?: string; title?: string }> }) => {
         const list = data.items ?? [];
         return list.map((item): MediaItem => ({ type: "image", src: item.url ?? "", title: item.title ?? "Imagen" }));
       }).catch(() => []),
@@ -186,25 +186,25 @@ export default function HomePage() {
   }, [audiovisualOpen]);
 
   useEffect(() => {
-    fetch(`${FUNCTIONS_URL}/eventos`)
+    fetch(getFunctionUrl("eventos"))
       .then((res) => res.json())
       .then((data: { eventos?: EventoCard[] }) => setEventos(data.eventos ?? []))
       .catch(() => setEventos([]));
   }, []);
   useEffect(() => {
-    fetch(`${FUNCTIONS_URL}/informacion`)
+    fetch(getFunctionUrl("informacion"))
       .then((res) => res.json())
       .then((data: { title?: string; body?: string }) => setInformacion(data))
       .catch(() => setInformacion({}));
   }, []);
   useEffect(() => {
-    fetch(`${FUNCTIONS_URL}/oracion`)
+    fetch(getFunctionUrl("oracion"))
       .then((res) => res.json())
       .then((data: { verseText?: string; verseRef?: string; message?: string }) => setOracionData(data))
       .catch(() => setOracionData({}));
   }, []);
   useEffect(() => {
-    fetch(`${FUNCTIONS_URL}/multimedia`)
+    fetch(getFunctionUrl("multimedia"))
       .then((res) => res.json())
       .then((data: { items?: Array<{ url?: string; title?: string }> }) => {
         const list = data.items ?? [];
@@ -219,7 +219,7 @@ export default function HomePage() {
       .catch(() => setMultimediaGallery([]));
   }, []);
   useEffect(() => {
-    fetch(`${FUNCTIONS_URL}/agenda`)
+    fetch(getFunctionUrl("agenda"))
       .then((res) => res.json())
       .then((data: { slots?: AgendaSlot[]; porDefinir?: string[] }) => {
         if (Array.isArray(data.slots) && data.slots.length > 0) {
@@ -231,7 +231,7 @@ export default function HomePage() {
       .catch(() => setAgendaData(null));
   }, []);
   useEffect(() => {
-    fetch(`${FUNCTIONS_URL}/ministerios`)
+    fetch(getFunctionUrl("ministerios"))
       .then((res) => res.json())
       .then((data: { items?: MinisterioItem[] }) => setMinisteriosData(Array.isArray(data.items) ? data.items : []))
       .catch(() => setMinisteriosData([]));

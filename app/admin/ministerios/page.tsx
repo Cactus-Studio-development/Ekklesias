@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { auth, FUNCTIONS_URL } from "@/lib/firebase";
+import { auth, getFunctionUrl } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { Toaster, toast } from "sonner";
@@ -26,7 +26,7 @@ export default function AdminMinisteriosPage() {
 
   function load() {
     setLoading(true);
-    fetch(`${FUNCTIONS_URL}/ministerios`)
+    fetch(getFunctionUrl("ministerios"))
       .then((res) => res.json())
       .then((data: { items?: Ministerio[] }) => setItems(data.items ?? []))
       .catch(() => setItems([]))
@@ -62,7 +62,7 @@ export default function AdminMinisteriosPage() {
     setSaving(true);
     try {
       const token = await u.getIdToken();
-      const res = await fetch(`${FUNCTIONS_URL}/ministerios`, {
+      const res = await fetch(getFunctionUrl("ministerios"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -94,7 +94,7 @@ export default function AdminMinisteriosPage() {
     setDeletingId(id);
     try {
       const token = await u.getIdToken();
-      const res = await fetch(`${FUNCTIONS_URL}/ministerios?id=${encodeURIComponent(id)}`, {
+      const res = await fetch(`${getFunctionUrl("ministerios")}?id=${encodeURIComponent(id)}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { auth, FUNCTIONS_URL } from "@/lib/firebase";
+import { auth, getFunctionUrl } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { Toaster, toast } from "sonner";
@@ -15,7 +15,7 @@ export default function AdminOracionPage() {
 
   function load() {
     setLoading(true);
-    fetch(`${FUNCTIONS_URL}/oracion`)
+    fetch(getFunctionUrl("oracion"))
       .then((res) => res.json())
       .then((data: { verseText?: string; verseRef?: string; message?: string }) => {
         setVerseText(data.verseText ?? "");
@@ -37,7 +37,7 @@ export default function AdminOracionPage() {
     setSaving(true);
     try {
       const token = await u.getIdToken();
-      const res = await fetch(`${FUNCTIONS_URL}/oracion`, {
+      const res = await fetch(getFunctionUrl("oracion"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, verseText, verseRef, message }),

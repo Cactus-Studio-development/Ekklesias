@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { auth, FUNCTIONS_URL } from "@/lib/firebase";
+import { auth, getFunctionUrl } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { Toaster, toast } from "sonner";
@@ -25,7 +25,7 @@ export default function AdminDashboardPage() {
     }
     u.getIdToken()
       .then((token) =>
-        fetch(`${FUNCTIONS_URL}/session`, {
+        fetch(getFunctionUrl("session"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ token }),
@@ -50,7 +50,7 @@ export default function AdminDashboardPage() {
     setCompleting(true);
     try {
       const token = await u.getIdToken();
-      const res = await fetch(`${FUNCTIONS_URL}/registerAdmin`, {
+      const res = await fetch(getFunctionUrl("registerAdmin"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token }),

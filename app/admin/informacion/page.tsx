@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { auth, FUNCTIONS_URL } from "@/lib/firebase";
+import { auth, getFunctionUrl } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { Toaster, toast } from "sonner";
@@ -14,7 +14,7 @@ export default function AdminInformacionPage() {
 
   function load() {
     setLoading(true);
-    fetch(`${FUNCTIONS_URL}/informacion`)
+    fetch(getFunctionUrl("informacion"))
       .then((res) => res.json())
       .then((data: { title?: string; body?: string }) => {
         setTitle(data.title ?? "");
@@ -35,7 +35,7 @@ export default function AdminInformacionPage() {
     setSaving(true);
     try {
       const token = await u.getIdToken();
-      const res = await fetch(`${FUNCTIONS_URL}/informacion`, {
+      const res = await fetch(getFunctionUrl("informacion"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, title, body }),

@@ -35,5 +35,29 @@ if (typeof window !== "undefined" && config.apiKey && config.projectId) {
 
 export { app, auth, db, storage };
 
-export const FUNCTIONS_URL =
+const FUNCTIONS_BASE =
   process.env.NEXT_PUBLIC_FIREBASE_FUNCTIONS_URL ?? "https://us-central1-fb-api-79e8c.cloudfunctions.net";
+
+const FUNCTION_NAMES = [
+  "agenda",
+  "multimedia",
+  "informacion",
+  "eventos",
+  "registerAdmin",
+  "session",
+  "oracion",
+  "ministerios",
+] as const;
+
+function getEnvUrl(name: string): string | undefined {
+  const key = `NEXT_PUBLIC_${name.toUpperCase()}_URL`;
+  return (process.env as Record<string, string | undefined>)[key];
+}
+
+export function getFunctionUrl(name: (typeof FUNCTION_NAMES)[number]): string {
+  const envUrl = getEnvUrl(name);
+  if (envUrl) return envUrl.replace(/\/$/, "");
+  return `${FUNCTIONS_BASE.replace(/\/$/, "")}/${name}`;
+}
+
+export const FUNCTIONS_URL = FUNCTIONS_BASE;

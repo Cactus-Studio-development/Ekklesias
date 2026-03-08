@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { auth, storage, FUNCTIONS_URL } from "@/lib/firebase";
+import { auth, storage, getFunctionUrl } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Link from "next/link";
@@ -28,7 +28,7 @@ export default function AdminMultimediaPage() {
 
   function loadItems() {
     setLoading(true);
-    fetch(`${FUNCTIONS_URL}/multimedia`)
+    fetch(getFunctionUrl("multimedia"))
       .then((res) => res.json())
       .then((data: { items?: MultimediaItem[] }) => setItems(data.items ?? []))
       .catch(() => setItems([]))
@@ -61,7 +61,7 @@ export default function AdminMultimediaPage() {
         const storageRef = ref(storage, storagePath);
         await uploadBytes(storageRef, file);
         const url = await getDownloadURL(storageRef);
-        const res = await fetch(`${FUNCTIONS_URL}/multimedia`, {
+        const res = await fetch(getFunctionUrl("multimedia"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -99,7 +99,7 @@ export default function AdminMultimediaPage() {
     setDeletingId(id);
     try {
       const token = await u.getIdToken();
-      const res = await fetch(`${FUNCTIONS_URL}/multimedia?id=${encodeURIComponent(id)}`, {
+      const res = await fetch(`${getFunctionUrl("multimedia")}?id=${encodeURIComponent(id)}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { auth, FUNCTIONS_URL } from "@/lib/firebase";
+import { auth, getFunctionUrl } from "@/lib/firebase";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { Toaster, toast } from "sonner";
@@ -20,7 +20,7 @@ export default function AdminEventosPage() {
 
   function loadEventos() {
     setLoading(true);
-    fetch(`${FUNCTIONS_URL}/eventos`)
+    fetch(getFunctionUrl("eventos"))
       .then((res) => res.json())
       .then((data: { eventos?: Evento[] }) => setEventos(data.eventos ?? []))
       .catch(() => setEventos([]))
@@ -38,7 +38,7 @@ export default function AdminEventosPage() {
     setSaving(true);
     try {
       const token = await u.getIdToken();
-      const res = await fetch(`${FUNCTIONS_URL}/eventos`, {
+      const res = await fetch(getFunctionUrl("eventos"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token, title, description, fecha, imageUrl: imageUrl || undefined }),
@@ -67,7 +67,7 @@ export default function AdminEventosPage() {
     setDeletingId(id);
     try {
       const token = await u.getIdToken();
-      const res = await fetch(`${FUNCTIONS_URL}/eventos?id=${encodeURIComponent(id)}`, {
+      const res = await fetch(`${getFunctionUrl("eventos")}?id=${encodeURIComponent(id)}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
