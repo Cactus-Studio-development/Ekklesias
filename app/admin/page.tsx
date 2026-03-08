@@ -49,7 +49,7 @@ export default function AdminLoginPage() {
               className="admin-login__input"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="admin@ekklesias.com"
+              placeholder="admin@osisg.com"
               autoComplete="email"
               disabled={loading}
             />

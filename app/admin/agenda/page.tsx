@@ -226,7 +226,7 @@ export default function AdminAgendaPage() {
             <div className="admin-agenda-preview-inner">
               <div className="agenda-section agenda-section--preview">
                 <div className="section-head agenda-head">
-                  <h2><FiCalendar aria-hidden /> Agenda semanal</h2>
+                  <h2><FiCalendar aria-hidden="true" /> Agenda semanal</h2>
                   <p>Conecta con la comunidad en reuniones presenciales y online.</p>
                 </div>
                 <div className="calendar-wrap">
@@ -240,7 +240,7 @@ export default function AdminAgendaPage() {
                               const Icon = ICON_COMPONENTS[slot.icon] ?? FiUsers;
                               return (
                                 <div key={`${slot.day}-${slot.event}`} className="calendar-event">
-                                  <Icon className="calendar-event-icon" aria-hidden />
+                                  <Icon className="calendar-event-icon" aria-hidden="true" />
                                   <span className="calendar-event-name">{slot.event}</span>
                                   <span className="calendar-event-hour">{slot.hour}</span>
                                 </div>
