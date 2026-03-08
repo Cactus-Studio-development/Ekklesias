@@ -240,7 +240,7 @@ export default function AdminAgendaPage() {
                               const Icon = ICON_COMPONENTS[slot.icon] ?? FiUsers;
                               return (
                                 <div key={`${slot.day}-${slot.event}`} className="calendar-event">
-                                  <Icon className="calendar-event-icon" aria-hidden="true" />
+                                  <Icon className="calendar-event-icon" aria-hidden />
                                   <span className="calendar-event-name">{slot.event}</span>
                                   <span className="calendar-event-hour">{slot.hour}</span>
                                 </div>
