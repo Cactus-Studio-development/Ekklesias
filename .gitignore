@@ -21,5 +21,8 @@ pnpm-debug.log*
 # local env files
 .env*.local
 
+# Firebase / Google credentials (never commit)
+/json/
+
 # typescript
 *.tsbuildinfo

@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
-import { Manrope, Work_Sans } from "next/font/google";
+import { Lora, Great_Vibes, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
+const lora = Lora({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const workSans = Work_Sans({
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  variable: "--font-script",
+  weight: ["400"],
+});
+
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-body",
   weight: ["400", "500", "600", "700"],
@@ -27,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${manrope.variable} ${workSans.variable}`}>{children}</body>
+      <body className={`${lora.variable} ${greatVibes.variable} ${dmSans.variable}`}>{children}</body>
     </html>
   );
 }
