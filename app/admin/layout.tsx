@@ -34,7 +34,7 @@ export default function AdminLayout({
       return;
     }
     if (!isPublicAdminPage && !user) {
-      window.location.href = "/admin";
+      window.location.href = "/admin/";
       return;
     }
   }, [loading, user, pathname]);

@@ -71,7 +71,7 @@ export default function AdminDashboardPage() {
 
   async function handleLogout() {
     await signOut(auth);
-    window.location.href = "/admin";
+    window.location.href = "/admin/";
   }
 
   if (loading) {
